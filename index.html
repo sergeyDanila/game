@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Rock Paper Scissors</title>
+    <style>
+        body { text-align: center; font-family: Arial; }
+        button { font-size: 40px; margin: 10px; }
+        #result { font-size: 24px; margin-top: 20px; }
+    </style>
+</head>
+<body>
+    <h1>Камень, Ножницы, Бумага</h1>
+    <button onclick="play('камень')">✊</button>
+    <button onclick="play('ножницы')">✂️</button>
+    <button onclick="play('бумага')">📄</button>
+    <div id="result"></div>
+
+    <script>
+        const choices = ['камень', 'ножницы', 'бумага'];
+        function play(userChoice) {
+            const botChoice = choices[Math.floor(Math.random() * 3)];
+            let result = '';
+            if (userChoice === botChoice) {
+                result = 'Ничья!';
+            } else if (
+                (userChoice === 'камень' && botChoice === 'ножницы') ||
+                (userChoice === 'ножницы' && botChoice === 'бумага') ||
+                (userChoice === 'бумага' && botChoice === 'камень')
+            ) {
+                result = 'Ты выиграл!';
+            } else {
+                result = 'Бот выиграл!';
+            }
+            document.getElementById('result').innerText = 
+                `Ты: ${userChoice} | Бот: ${botChoice}\n${result}`;
+        }
+    </script>
+</body>
+</html>
